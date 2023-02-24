@@ -7,8 +7,8 @@
 - <s>GO: delete redundant test cases</s>
 - <s>JS: separate test code from production code</s>
 - <s>JS: delete redundant test cases</s>
-- PY: separate test code from production code
-- PY: delete redundant test cases
+- <s>PY: separate test code from production code</s>
+- <s>PY: delete redundant test cases</s>
 - 5 USD + 10 EUR = 17 USD
 - 1 USD + 1100 KRW = 2200 KRW
 - remove redundant Money multiplication
