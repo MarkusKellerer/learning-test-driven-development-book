@@ -1,40 +1,31 @@
 package main
 
 import (
+	"tdd/stocks"
 	"testing"
 )
 
-func TestMultiplicationInDollars(t *testing.T) {
-	fiver := Money{
-		amount:   5,
-		currency: "USD",
-	}
-	actualResult := fiver.Times(2)
-	expectedResult := Money{amount: 10, currency: "USD"}
-	assertEqual(t, expectedResult, actualResult)
-}
-
-func TestMultiplicationInEuro(t *testing.T) {
-	tenEuros := Money{amount: 10, currency: "EUR"}
+func TestMultiplication(t *testing.T) {
+	tenEuros := stocks.NewMoney(10, "EUR")
 	actualResult := tenEuros.Times(2)
-	expectedResult := Money{amount: 20, currency: "EUR"}
+	expectedResult := stocks.NewMoney(20, "EUR")
 	assertEqual(t, expectedResult, actualResult)
 }
 
 func TestDivision(t *testing.T) {
-	originalMoney := Money{amount: 4002, currency: "KRW"}
+	originalMoney := stocks.NewMoney(4002, "KRW")
 	actualMoneyAfterDivision := originalMoney.Divide(4)
-	expectedMoneyAfterDivision := Money{amount: 1000.5, currency: "KRW"}
+	expectedMoneyAfterDivision := stocks.NewMoney(1000.5, "KRW")
 	assertEqual(t, expectedMoneyAfterDivision, actualMoneyAfterDivision)
 }
 
 func TestAdditionInUsd(t *testing.T) {
-	var portfolio Portfolio
-	var portfolioInDollars Money
+	var portfolio stocks.Portfolio
+	var portfolioInDollars stocks.Money
 
-	fiveDollar := Money{amount: 5, currency: "USD"}
-	tenDollar := Money{amount: 10, currency: "USD"}
-	fifteenDollar := Money{amount: 15, currency: "USD"}
+	fiveDollar := stocks.NewMoney(5, "USD")
+	tenDollar := stocks.NewMoney(10, "USD")
+	fifteenDollar := stocks.NewMoney(15, "USD")
 
 	portfolio = portfolio.Add(fiveDollar)
 	portfolio = portfolio.Add(tenDollar)
@@ -43,34 +34,8 @@ func TestAdditionInUsd(t *testing.T) {
 	assertEqual(t, fifteenDollar, portfolioInDollars)
 }
 
-func assertEqual(t *testing.T, expected Money, actual Money) {
+func assertEqual(t *testing.T, expected stocks.Money, actual stocks.Money) {
 	if expected != actual {
 		t.Errorf("Expected %+v Got %+v", expected, actual)
 	}
-}
-
-type Money struct {
-	amount   float64
-	currency string
-}
-
-func (m Money) Times(multiplier int) Money {
-	return Money{amount: m.amount * float64(multiplier), currency: m.currency}
-}
-
-func (m Money) Divide(divisor int) Money {
-	return Money{amount: m.amount / float64(divisor), currency: m.currency}
-}
-
-type Portfolio []Money
-
-func (p Portfolio) Add(money Money) Portfolio {
-	return append(p, money)
-}
-func (p Portfolio) Evaluate(currency string) Money {
-	total := 0.0
-	for _, m := range p {
-		total = total + m.amount
-	}
-	return Money{amount: total, currency: currency}
 }
