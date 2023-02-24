@@ -2,6 +2,8 @@
 - <s>10 EUR x 2 = 20 EUR</s>
 - <s>4002 KRW / 4 = 1000.5 KRW</s>
 - <s>5 USD + 10 USD = 15 USD </s>
+- separate test code from production code
+- delete redundant test cases
 - 5 USD + 10 EUR = 17 USD
 - 1 USD + 1100 KRW = 2200 KRW
 - remove redundant Money multiplication
