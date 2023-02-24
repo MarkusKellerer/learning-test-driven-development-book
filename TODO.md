@@ -5,8 +5,8 @@
 - <s>GO: separate test code from production code</s>
 - <s>GO: create a public New function to initialize the Money struct</s>
 - <s>GO: delete redundant test cases</s>
-- JS: separate test code from production code
-- JS: delete redundant test cases
+- <s>JS: separate test code from production code</s>
+- <s>JS: delete redundant test cases</s>
 - PY: separate test code from production code
 - PY: delete redundant test cases
 - 5 USD + 10 EUR = 17 USD
