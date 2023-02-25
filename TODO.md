@@ -9,7 +9,7 @@
 - <s>JS: delete redundant test cases</s>
 - <s>PY: separate test code from production code</s>
 - <s>PY: delete redundant test cases</s>
-- 5 USD + 10 EUR = 17 USD
+- <s>5 USD + 10 EUR = 17 USD</s>
 - 1 USD + 1100 KRW = 2200 KRW
 - remove redundant Money multiplication
 - division by zero
