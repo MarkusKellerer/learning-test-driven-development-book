@@ -8,7 +8,7 @@ import (
 
 var bank stocks.Bank
 
-func init() {
+func initializeExchangeRates() {
 	bank = stocks.NewBank()
 	bank.AddExchangeRate("EUR", "USD", 1.2)
 	bank.AddExchangeRate("USD", "KRW", 1100)
@@ -29,6 +29,7 @@ func TestDivision(t *testing.T) {
 }
 
 func TestAdditionInUsd(t *testing.T) {
+	initializeExchangeRates()
 	var portfolio stocks.Portfolio
 
 	fiveDollar := stocks.NewMoney(5, "USD")
@@ -44,6 +45,8 @@ func TestAdditionInUsd(t *testing.T) {
 }
 
 func TestAdditionOfDollarsAndEuros(t *testing.T) {
+	initializeExchangeRates()
+
 	var portfolio stocks.Portfolio
 
 	fiveDollars := stocks.NewMoney(5, "USD")
@@ -60,6 +63,8 @@ func TestAdditionOfDollarsAndEuros(t *testing.T) {
 }
 
 func TestAdditionOfDollarsAndWons(t *testing.T) {
+	initializeExchangeRates()
+
 	var portfolio stocks.Portfolio
 
 	oneDollar := stocks.NewMoney(1, "USD")
@@ -76,6 +81,8 @@ func TestAdditionOfDollarsAndWons(t *testing.T) {
 }
 
 func TestAdditionWithMultipleMissingExchangeRates(t *testing.T) {
+	initializeExchangeRates()
+
 	var portfolio stocks.Portfolio
 
 	oneDollar := stocks.NewMoney(1, "USD")
@@ -93,13 +100,17 @@ func TestAdditionWithMultipleMissingExchangeRates(t *testing.T) {
 	assertEqual(t, expectedErrorMessage, actualError.Error())
 }
 
-func TestConversion(t *testing.T) {
-	bank := stocks.NewBank()
-	bank.AddExchangeRate("EUR", "USD", 1.2)
+func TestConversionWithDifferentRatesBetweenCurrencies(t *testing.T) {
+	initializeExchangeRates()
+
 	tenEuros := stocks.NewMoney(10, "EUR")
 	actualConvertedMoney, err := bank.Convert(tenEuros, "USD")
 	assertNil(t, err)
 	assertEqual(t, stocks.NewMoney(12, "USD"), *actualConvertedMoney)
+	bank.AddExchangeRate("EUR", "USD", 1.3)
+	actualConvertedMoney, err = bank.Convert(tenEuros, "USD")
+	assertNil(t, err)
+	assertEqual(t, stocks.NewMoney(13, "USD"), *actualConvertedMoney)
 }
 
 func TestConversionWithMissingExchangeRate(t *testing.T) {
