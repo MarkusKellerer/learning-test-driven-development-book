@@ -13,7 +13,8 @@
 - <s>1 USD + 1100 KRW = 2200 KRW</s>
 - <s>Determine exchange rates based on the currencies involved (from -> to)</s>
 - <s>Improve error handling when exchange rates are unspecified</s>
-- <s>Improve the implementation of exchange rates </s>
+- <s> Improve the implementation of exchange rates </s>
 - Allow exchange rates to be modified
 - remove redundant Money multiplication
 - division by zero
+- <s> Continuously integrate code </s>
