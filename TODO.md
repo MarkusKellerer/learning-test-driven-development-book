@@ -11,8 +11,9 @@
 - <s>PY: delete redundant test cases</s>
 - <s>5 USD + 10 EUR = 17 USD</s>
 - <s>1 USD + 1100 KRW = 2200 KRW</s>
-- Improve error handling when exchange rates are unspecified
-- Determine exchange rates based on the currencies involved (from -> to)
+- <s>Determine exchange rates based on the currencies involved (from -> to)</s>
+- <s>Improve error handling when exchange rates are unspecified</s>
+- improve the implementation of exchange rates
 - Allow exchange rates to be modified
 - remove redundant Money multiplication
 - division by zero
